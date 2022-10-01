@@ -12,8 +12,12 @@ import javafx.scene.paint.CycleMethod;
 import javafx.scene.paint.RadialGradient;
 import javafx.scene.paint.Stop;
 import javafx.scene.text.Font;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
+
+import java.io.File;
+import java.util.Scanner;
 
 public class Level2 extends Application {
     public Level2(Stage stage) {
@@ -25,10 +29,35 @@ public class Level2 extends Application {
     }
 
     public void start(Stage lev2) throws Exception {
-        //   setting parameters for "RULES" window
+
+
         Group play = new Group();
+;
+
+        Font font = Font.loadFont("file:src/main/resources/Pixeboy-z8XGD.ttf", 45);
+        Font textFont = Font.loadFont("file:src/main/resources/Pixeboy-z8XGD.ttf", 30);
+
+
+        Button nextQuestionButton = new Button("BEGIN!");
+        nextQuestionButton.setLayoutX(240);
+        nextQuestionButton.setLayoutY(210);
+        nextQuestionButton.setOnAction(new EventHandler<ActionEvent>(){
+            public void handle(ActionEvent event){
+
+                new Question(lev2);
+
+
+            }
+        });
+        play.getChildren().add(nextQuestionButton);
+        nextQuestionButton.setVisible(true);
+
+
+
+
+        //   setting parameters for "Level 2" window
         Scene scene_lev2 = new Scene(play, 600, 400);
-        lev2.setTitle("PLAY");
+        lev2.setTitle("Quiz Game!");
         lev2.setScene(scene_lev2);
         lev2.setOnCloseRequest(new EventHandler<WindowEvent>() {
             @Override
@@ -46,13 +75,21 @@ public class Level2 extends Application {
         ));
 
         //adding label
-        Label label = new Label("Level 2");
-        Font font = Font.loadFont("file:src/main/resources/Pixeboy-z8XGD.ttf", 45);
+        Label label = new Label("Welcome to the Quiz Game!");
         label.setFont(font);
         label.setTextFill(Color.WHITE);
         label.setTranslateX(83);
         label.setTranslateY(40);
         play.getChildren().add(label);
+
+        //Text explaining the quiz
+
+        Text quizInfo = new Text("asdasda");
+        quizInfo.setFont(font);
+        quizInfo.setFill(Color.WHITE);
+        quizInfo.setTranslateX(83);
+        quizInfo.setTranslateY(100);
+        play.getChildren().add(quizInfo);
 
         //adding button "BACK"
         Button buttonBack = new Button("BACK");
@@ -72,4 +109,5 @@ public class Level2 extends Application {
         play.getChildren().add(buttonBack);
         buttonBack.setVisible(true);
     }
+
 }
