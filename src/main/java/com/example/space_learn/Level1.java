@@ -17,6 +17,9 @@ import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
 public class Level1 extends Application {
+
+    public static int counter = 0;
+
     public Level1(Stage stage) {
         try {
             start(stage);
@@ -72,7 +75,7 @@ public class Level1 extends Application {
         });
         play.getChildren().add(buttonBack);
 
-        Puzzle_1 puzzle = new Puzzle_1(200, 100);
+        Puzzle_1 puzzle = new Puzzle_1(200, 100, play);
         play.getChildren().add(puzzle.getGridPane());
 
         buttonBack.setVisible(true);
