@@ -15,6 +15,10 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+
+import java.io.FileInputStream;
 
 public class Information extends Application {
     public Information(Stage stage) {
@@ -38,6 +42,8 @@ public class Information extends Application {
             }
         });
 
+
+
         //adding background
         scene.setFill(new RadialGradient(
                 2, 1, 0, 0, 1, true,
@@ -45,6 +51,14 @@ public class Information extends Application {
                 new Stop(0, Color.web("086208FF")),
                 new Stop(1, Color.web("010546FF"))
         ));
+
+        Image image5 = new Image(new FileInputStream("D:\\OneDrive\\Documents\\github\\demo2\\space learn\\IMG_2289.PNG"));
+        ImageView imageView5 = new ImageView(image5);
+        imageView5.setX(180);
+        imageView5.setY(180);
+        imageView5.setFitHeight(390);
+        imageView5.setFitWidth(390);
+        info.getChildren().add(imageView5);
 
         //adding description about contributors
         Text t = new Text();
@@ -60,6 +74,8 @@ public class Information extends Application {
         t.setLayoutY(100);
         t.setFill(Color.WHITE);
         info.getChildren().add(t);
+
+
 
         //adding button "BACK"
         Button buttonBack = new Button("BACK");

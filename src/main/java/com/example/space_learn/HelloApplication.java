@@ -35,7 +35,6 @@ public class HelloApplication extends Application {
     //setting parameters for the main menu
     public void start(Stage stage) throws IOException {
         Group groupRoot = new Group();
-        //FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
         Scene scene = new Scene(groupRoot, 600, 400);
         stage.setTitle("Space Learn");
         stage.setResizable(false);
@@ -67,7 +66,7 @@ public class HelloApplication extends Application {
 
         Image image4 = new Image(new FileInputStream("D:\\OneDrive\\Documents\\github\\demo2\\space learn\\IMG_2281.PNG"));
         ImageView imageView4 = new ImageView(image4);
-        imageView4.setX(350);
+        imageView4.setX(360);
         imageView4.setY(10);
         imageView4.setFitHeight(200);
         imageView4.setFitWidth(200);
