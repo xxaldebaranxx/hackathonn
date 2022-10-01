@@ -7,6 +7,7 @@ import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.CycleMethod;
 import javafx.scene.paint.RadialGradient;
@@ -70,6 +71,10 @@ public class Level1 extends Application {
             }
         });
         play.getChildren().add(buttonBack);
+
+        Puzzle_1 puzzle = new Puzzle_1(200, 100);
+        play.getChildren().add(puzzle.getGridPane());
+
         buttonBack.setVisible(true);
 
     }
