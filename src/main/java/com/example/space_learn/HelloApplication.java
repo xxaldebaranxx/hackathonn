@@ -57,7 +57,7 @@ public class HelloApplication extends Application {
         Font font = Font.loadFont("file:src/main/resources/Pixeboy-z8XGD.ttf", 45);
         label.setFont(font);
         label.setTextFill(Color.WHITE);
-        label.setTranslateX(200);
+        label.setTranslateX(180);
         label.setTranslateY(40);
         groupRoot.getChildren().add(label);
 
@@ -70,39 +70,39 @@ public class HelloApplication extends Application {
         groupRoot.getChildren().add(buttonStart);
         buttonStart.setOnAction(new EventHandler<ActionEvent>() {
             public void handle(ActionEvent event) {
-                //opening game window
+                new Play(stage);
             }
         });
 
-        //setting parameters for button 'RULES'
-        Button buttonRules = new Button("    RULES    ");
-        buttonRules.setStyle("-fx-background-color: #000f46; -fx-text-fill: #00ff00;-fx-font-size: 1.75em;-fx-font: normal bold 25px 'Pixeboy';-fx-background-radius: 15px;");
-        buttonRules.setLayoutX(240);
-        buttonRules.setLayoutY(145);
-        groupRoot.getChildren().add(buttonRules);
-        buttonRules.setOnAction(new EventHandler<ActionEvent>() {
-            public void handle(ActionEvent event) {
-                new Rules(stage);
-            }
-        });
-
-        //setting parameters for button 'SETTINGS'
-        Button buttonSettings = new Button("SETTINGS");
-        buttonSettings.setStyle("-fx-background-color: #000f46; -fx-text-fill: #00ff00;-fx-font-size: 1.75em;-fx-font: normal bold 25px 'Pixeboy';-fx-background-radius: 15px;");
-        buttonSettings.setLayoutX(240);
-        buttonSettings.setLayoutY(200);
-        groupRoot.getChildren().add(buttonSettings);
-        buttonSettings.setOnAction(new EventHandler<ActionEvent>() {
-            public void handle(ActionEvent event) {
-                new Settings(stage);
-            }
-        });
+//        //setting parameters for button 'RULES'
+//        Button buttonRules = new Button("    RULES    ");
+//        buttonRules.setStyle("-fx-background-color: #000f46; -fx-text-fill: #00ff00;-fx-font-size: 1.75em;-fx-font: normal bold 25px 'Pixeboy';-fx-background-radius: 15px;");
+//        buttonRules.setLayoutX(240);
+//        buttonRules.setLayoutY(145);
+//        groupRoot.getChildren().add(buttonRules);
+//        buttonRules.setOnAction(new EventHandler<ActionEvent>() {
+//            public void handle(ActionEvent event) {
+//                new Rules(stage);
+//            }
+//        });
+//
+//        //setting parameters for button 'SETTINGS'
+//        Button buttonSettings = new Button("SETTINGS");
+//        buttonSettings.setStyle("-fx-background-color: #000f46; -fx-text-fill: #00ff00;-fx-font-size: 1.75em;-fx-font: normal bold 25px 'Pixeboy';-fx-background-radius: 15px;");
+//        buttonSettings.setLayoutX(240);
+//        buttonSettings.setLayoutY(200);
+//        groupRoot.getChildren().add(buttonSettings);
+//        buttonSettings.setOnAction(new EventHandler<ActionEvent>() {
+//            public void handle(ActionEvent event) {
+//                new Settings(stage);
+//            }
+//        });
 
         //setting parameters for button 'QUIT'
         Button buttonQuit = new Button("     QUIT     ");
         buttonQuit.setStyle("-fx-background-color: #000f46; -fx-text-fill: #00ff00;-fx-font-size: 1.75em;-fx-font: normal bold 25px 'Pixeboy';-fx-background-radius: 15px;");
         buttonQuit.setLayoutX(240);
-        buttonQuit.setLayoutY(255);
+        buttonQuit.setLayoutY(145);
         groupRoot.getChildren().add(buttonQuit);
         buttonQuit.setOnAction(new EventHandler<ActionEvent>() {
             public void handle(ActionEvent event) {
