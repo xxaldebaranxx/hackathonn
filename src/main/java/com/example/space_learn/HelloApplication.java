@@ -53,19 +53,19 @@ public class HelloApplication extends Application {
         ));
 
         //adding label
-        Label label = new Label("Space Learn");
+        Label label = new Label("Space Frog");
         Font font = Font.loadFont("file:src/main/resources/Pixeboy-z8XGD.ttf", 45);
         label.setFont(font);
         label.setTextFill(Color.WHITE);
-        label.setTranslateX(180);
+        label.setTranslateX(205);
         label.setTranslateY(40);
         groupRoot.getChildren().add(label);
 
         //setting parameters for button 'START'
-        Button buttonStart = new Button("     PLAY     ");
+        Button buttonStart = new Button("     PUZZLE     ");
         buttonStart.setFont(font);
         buttonStart.setStyle("-fx-background-color: #00ff00; -fx-text-fill: #000a28;-fx-font-size: 1.75em; -fx-font: normal bold 25px 'Pixeboy';-fx-background-radius: 15px;");
-        buttonStart.setLayoutX(240);
+        buttonStart.setLayoutX(235);
         buttonStart.setLayoutY(90);
         groupRoot.getChildren().add(buttonStart);
         buttonStart.setOnAction(new EventHandler<ActionEvent>() {
@@ -74,34 +74,37 @@ public class HelloApplication extends Application {
             }
         });
 
-//        //setting parameters for button 'RULES'
-//        Button buttonRules = new Button("    RULES    ");
-//        buttonRules.setStyle("-fx-background-color: #000f46; -fx-text-fill: #00ff00;-fx-font-size: 1.75em;-fx-font: normal bold 25px 'Pixeboy';-fx-background-radius: 15px;");
-//        buttonRules.setLayoutX(240);
-//        buttonRules.setLayoutY(145);
-//        groupRoot.getChildren().add(buttonRules);
-//        buttonRules.setOnAction(new EventHandler<ActionEvent>() {
-//            public void handle(ActionEvent event) {
-//                new Rules(stage);
-//            }
-//        });
-//
-//        //setting parameters for button 'SETTINGS'
-//        Button buttonSettings = new Button("SETTINGS");
-//        buttonSettings.setStyle("-fx-background-color: #000f46; -fx-text-fill: #00ff00;-fx-font-size: 1.75em;-fx-font: normal bold 25px 'Pixeboy';-fx-background-radius: 15px;");
-//        buttonSettings.setLayoutX(240);
-//        buttonSettings.setLayoutY(200);
-//        groupRoot.getChildren().add(buttonSettings);
-//        buttonSettings.setOnAction(new EventHandler<ActionEvent>() {
-//            public void handle(ActionEvent event) {
-//                new Settings(stage);
-//            }
-//        });
+
+
+        //setting parameters for button 'QUIZ'
+        Button buttonRules = new Button("    QUIZ    ");
+        buttonRules.setStyle("-fx-background-color: #00ff00; -fx-text-fill: #000a28;-fx-font-size: 1.75em;-fx-font: normal bold 25px 'Pixeboy';-fx-background-radius: 15px;");
+        buttonRules.setLayoutX(250);
+        buttonRules.setLayoutY(145);
+        groupRoot.getChildren().add(buttonRules);
+        buttonRules.setOnAction(new EventHandler<ActionEvent>() {
+            public void handle(ActionEvent event) {
+                new Quiz(stage);
+            }
+        });
+
+
+        //setting parameters for button 'INFO'
+        Button buttonInfo = new Button("Information");
+        buttonInfo.setStyle("-fx-background-color: #00ff00; -fx-text-fill: #000a28;-fx-font-size: 1.75em;-fx-font: normal bold 25px 'Pixeboy';-fx-background-radius: 15px;");
+        buttonInfo.setLayoutX(225);
+        buttonInfo.setLayoutY(200);
+        groupRoot.getChildren().add(buttonInfo);
+        buttonInfo.setOnAction(new EventHandler<ActionEvent>() {
+            public void handle(ActionEvent event) {
+                new Information(stage);
+            }
+        });
 
         //setting parameters for button 'QUIT'
         Button buttonQuit = new Button("     QUIT     ");
         buttonQuit.setStyle("-fx-background-color: #000f46; -fx-text-fill: #00ff00;-fx-font-size: 1.75em;-fx-font: normal bold 25px 'Pixeboy';-fx-background-radius: 15px;");
-        buttonQuit.setLayoutX(240);
+        buttonQuit.setLayoutX(245);
         buttonQuit.setLayoutY(255);
         groupRoot.getChildren().add(buttonQuit);
         buttonQuit.setOnAction(new EventHandler<ActionEvent>() {

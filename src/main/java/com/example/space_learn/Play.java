@@ -29,7 +29,7 @@ public class Play extends Application {
         //   setting parameters for "RULES" window
         Group play = new Group();
         Scene scene = new Scene(play, 600, 400);
-        stage.setTitle("PLAY");
+        stage.setTitle("PUZZLE");
         stage.setScene(scene);
         stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
             @Override public void handle(WindowEvent t) {
