@@ -102,7 +102,7 @@ public class HelloApplication extends Application {
         Button buttonQuit = new Button("     QUIT     ");
         buttonQuit.setStyle("-fx-background-color: #000f46; -fx-text-fill: #00ff00;-fx-font-size: 1.75em;-fx-font: normal bold 25px 'Pixeboy';-fx-background-radius: 15px;");
         buttonQuit.setLayoutX(240);
-        buttonQuit.setLayoutY(145);
+        buttonQuit.setLayoutY(255);
         groupRoot.getChildren().add(buttonQuit);
         buttonQuit.setOnAction(new EventHandler<ActionEvent>() {
             public void handle(ActionEvent event) {
