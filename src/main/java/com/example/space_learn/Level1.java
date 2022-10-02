@@ -45,17 +45,6 @@ public class Level1 extends Application {
             }
         });
 
-        Image image6 = new Image(new FileInputStream("D:\\OneDrive\\Documents\\github\\demo2\\space learn\\src\\main\\resources\\puzzle\\IMG_2303.PNG"));
-        ImageView imageView6 = new ImageView(image6);
-        imageView6.setX(225);
-        imageView6.setY(200);
-        imageView6.setFitHeight(200);
-        imageView6.setFitWidth(200);
-        play.getChildren().add(imageView6);
-
-
-
-
         //adding background
         scene_lev1.setFill(new RadialGradient(
                 2, 1, 0, 0, 1, true,
