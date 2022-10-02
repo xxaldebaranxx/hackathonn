@@ -95,7 +95,7 @@ public class Play extends Application {
         buttonlev2.setStyle("-fx-background-color: #00ff00; -fx-text-fill: #000a28;-fx-font-size: 1.75em;-fx-font: normal bold 25px 'Pixeboy';-fx-background-radius: 15px;");
         buttonlev2.setOnAction(new EventHandler<ActionEvent>(){
             public void handle(ActionEvent event){
-                new Level2(stage);
+                //
             }
         });
         play.getChildren().add(buttonlev2);

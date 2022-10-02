@@ -1,5 +1,6 @@
 package com.example.space_learn;
 import javafx.application.Application;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -14,6 +15,9 @@ import javafx.scene.paint.CycleMethod;
 import javafx.scene.paint.Stop;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+import java.io.File;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
@@ -39,7 +43,13 @@ public class HelloApplication extends Application {
         stage.setResizable(false);
         stage.setScene(scene);
 
-        Image image1 = new Image(new FileInputStream("D:\\OneDrive\\Documents\\github\\demo2\\space learn\\IMG_2281.PNG"));
+        String path = "src/main/resources/Komiku_-_01_-_Soundtrack.mp3";
+        Media media = new Media(new File(path).toURI().toString());
+        MediaPlayer mediaPlayer = new MediaPlayer(media);
+        mediaPlayer.setAutoPlay(true);
+        mediaPlayer.play();
+
+        Image image1 = new Image(new FileInputStream("src/main/resources/IMG_2281.PNG"));
         ImageView imageView = new ImageView(image1);
         imageView.setX(40);
         imageView.setY(10);
@@ -47,7 +57,7 @@ public class HelloApplication extends Application {
         imageView.setFitWidth(200);
         groupRoot.getChildren().add(imageView);
 
-        Image image2 = new Image(new FileInputStream("D:\\OneDrive\\Documents\\github\\demo2\\space learn\\IMG_2285.PNG"));
+        Image image2 = new Image(new FileInputStream("src/main/resources/IMG_2285.PNG"));
         ImageView imageView2 = new ImageView(image2);
         imageView2.setX(310);
         imageView2.setY(100);
@@ -55,7 +65,7 @@ public class HelloApplication extends Application {
         imageView2.setFitWidth(390);
         groupRoot.getChildren().add(imageView2);
 
-        Image image3 = new Image(new FileInputStream("D:\\OneDrive\\Documents\\github\\demo2\\space learn\\IMG_2281.PNG"));
+        Image image3 = new Image(new FileInputStream("src/main/resources/IMG_2281.PNG"));
         ImageView imageView3 = new ImageView(image3);
         imageView3.setX(40);
         imageView3.setY(170);
@@ -63,7 +73,7 @@ public class HelloApplication extends Application {
         imageView3.setFitWidth(200);
         groupRoot.getChildren().add(imageView3);
 
-        Image image4 = new Image(new FileInputStream("D:\\OneDrive\\Documents\\github\\demo2\\space learn\\IMG_2281.PNG"));
+        Image image4 = new Image(new FileInputStream("src/main/resources/IMG_2281.PNG"));
         ImageView imageView4 = new ImageView(image4);
         imageView4.setX(360);
         imageView4.setY(10);
@@ -117,7 +127,7 @@ public class HelloApplication extends Application {
         groupRoot.getChildren().add(buttonRules);
         buttonRules.setOnAction(new EventHandler<ActionEvent>() {
             public void handle(ActionEvent event) {
-                new Quiz(stage);
+                new Level2(stage);
             }
         });
 
