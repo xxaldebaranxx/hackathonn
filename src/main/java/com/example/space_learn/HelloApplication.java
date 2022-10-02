@@ -1,5 +1,4 @@
 package com.example.space_learn;
-
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
