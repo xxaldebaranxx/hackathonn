@@ -1,6 +1,7 @@
 package com.example.space_learn;
 
 import javafx.application.Application;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -15,7 +16,10 @@ import javafx.scene.paint.CycleMethod;
 import javafx.scene.paint.Stop;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 
+import java.io.File;
 import java.io.IOException;
 
 public class HelloApplication extends Application {
@@ -37,6 +41,13 @@ public class HelloApplication extends Application {
         stage.setTitle("Space Learn");
         stage.setResizable(false);
         stage.setScene(scene);
+
+        String path = "src/main/resources/Komiku_-_01_-_Soundtrack.mp3";
+        Media media = new Media(new File(path).toURI().toString());
+        MediaPlayer mediaPlayer = new MediaPlayer(media);
+        mediaPlayer.setAutoPlay(true);
+        mediaPlayer.play();
+
         stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
             @Override
             public void handle(WindowEvent t) {
