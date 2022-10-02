@@ -2,35 +2,37 @@ package com.example.space_learn;
 import javafx.scene.Group;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.image.PixelReader;
 import javafx.scene.image.WritableImage;
 import javafx.scene.layout.*;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Random;
 
 public class Puzzle_1 {
 
     private GridPane gridPane;
-    private ImageView imageView;
-    private Image image;
     private ArrayList<Button> buttons = new ArrayList<>();
     private ArrayList<ArrayList<Background>> backgrounds = new ArrayList<>();
     private ArrayList<Integer> buttonState = new ArrayList<>();
-    private String[] strs = {"file:src/main/resources/images/image1.jpg",
-            "file:src/main/resources/images/image2.jpg",
-            "file:src/main/resources/images/image3.jpg",
-            "file:src/main/resources/images/image4.jpg"};
+    private String[] strs = {
+            "file:src/main/resources/puzzle/1.jpg",
+            "file:src/main/resources/puzzle/2.jpg",
+            "file:src/main/resources/puzzle/3.jpg",
+            "file:src/main/resources/puzzle/4.jpg",
+            "file:src/main/resources/puzzle/5.jpg",
+            "file:src/main/resources/puzzle/6.jpg",
+            "file:src/main/resources/puzzle/7.jpg",
+            "file:src/main/resources/puzzle/8.jpg"
+   };
 
-
-
-    private int boxSize = 70;
+    private int boxSize = 100;
+    private int gridSize = 300;
     private int imageArraySize = 4;
     private int gridWidth = 3;
-    private int deadCellCount = 8;
+    private int deadCellCount = 2;
 
+    private int clickCounter = 0;
     private int counter = 0;
     private Group parent;
 
@@ -48,7 +50,6 @@ public class Puzzle_1 {
     }
 
     private GridPane createGridPane(){;
-//        GridPane gridPane = new GridPane();
 
         for (int i = 0; i < gridWidth*gridWidth; i++) {
 
@@ -62,19 +63,14 @@ public class Puzzle_1 {
 
             int finalI = i;
 
-            if(randomNb != 0){
-                button.setOnAction(value ->  {
-                    int id = finalI;
-                    Integer currentState = buttonState.get(finalI);
-                    Integer nextBgId = (Integer)( (currentState+1) % imageArraySize);
-                    buttonState.set(finalI, nextBgId);
-                    buttons.get(finalI).setBackground(backgrounds.get(nextBgId).get(finalI));
-                    checkIfWin();
-                });
-            }
-            else{
-                button.setStyle(boxSizeStr + "; -fx-border-color: blue;");
-            }
+            button.setOnAction(value ->  {
+                int id = finalI;
+                Integer currentState = buttonState.get(finalI);
+                Integer nextBgId = (Integer)( (currentState+1) % imageArraySize);
+                buttonState.set(finalI, nextBgId);
+                buttons.get(finalI).setBackground(backgrounds.get(nextBgId).get(finalI));
+                checkIfWin();
+            });
 
             int rowIndex = (i - (i%gridWidth)) / gridWidth;
             Background background = backgrounds.get(randomNb).get(i);
@@ -146,17 +142,32 @@ public class Puzzle_1 {
                 ++winStateCounter;
         }
         if(winStateCounter == buttonState.size()){
+
             buttons = new ArrayList<>();
             backgrounds = new ArrayList<>();
             buttonState = new ArrayList<>();
-            --deadCellCount;
-            ++gridWidth;
+            calcNextLevel();
+            this.gridPane.getChildren().removeAll(buttons);
             parent.getChildren().remove(this.getGridPane());
             createBackgrounds(strs);
             gridPane = createGridPane();
             parent.getChildren().add(this.getGridPane());
 
         }
+    }
+
+    private void calcNextLevel(){
+        --deadCellCount;
+        if(deadCellCount == 1){
+            deadCellCount = gridWidth*gridWidth - 1;
+            imageArraySize = ((imageArraySize+1)%(imageArraySize-3))+4;
+
+//            ++gridWidth;
+//            deadCellCount = gridWidth*gridWidth - 1;
+//            boxSize = gridSize / gridWidth;
+        }
+
+        clickCounter = 0;
     }
 
     public GridPane getGridPane(){

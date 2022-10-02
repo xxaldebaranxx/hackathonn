@@ -9,6 +9,8 @@ import javafx.geometry.Pos;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
@@ -20,6 +22,7 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
+import java.io.FileInputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -136,6 +139,27 @@ public class Question extends Application {
         groupOfAnswers.setSpacing(5);
 
 
+        Image sadFrogImage = new Image(new FileInputStream("src/main/resources/sadFrog.png"));
+        Image happyFrogImage = new Image(new FileInputStream("src/main/resources/happyFrog.png"));
+
+        ImageView sadView = new ImageView(sadFrogImage);
+        ImageView happyView = new ImageView(happyFrogImage);
+        happyView.setX(50);
+        happyView.setY(150);
+        happyView.setFitHeight(400);
+        happyView.setFitWidth(500);
+        happyView.setVisible(false);
+
+
+        sadView.setX(50);
+        sadView.setY(25);
+        sadView.setFitHeight(400);
+        sadView.setFitWidth(500);
+        sadView.setVisible(false);
+
+        play.getChildren().add(sadView);
+        play.getChildren().add(happyView);
+
 
 
         //Adding button "BACK"
@@ -174,22 +198,21 @@ public class Question extends Application {
 
                     if(answer1.isSelected()) {
                         pointCounter++;
+                        if(sadView.isVisible()) sadView.setVisible(false);
+                        happyView.setVisible(true);
+
                         pointLabel.setText(String.valueOf(pointCounter));
                     } else {
-                        if(pointCounter <= 0) {
-                            //TODO You have lost screen
-                            stage.close();
-                        }
                         pointCounter--;
                         pointLabel.setText(String.valueOf(pointCounter));
-
+                        if(happyView.isVisible()) happyView.setVisible(false);
+                        sadView.setVisible(true);
                     }
 
                     // Resetting things after a quesiton
                     answerGroup.selectToggle(null);
                     buttonNext.setDisable(true);
 
-                    //TODO implement point visibility
                     System.out.println(pointCounter);
                 } else stage.close();
                 //TODO implement quiz end screen

@@ -75,7 +75,7 @@ public class Level1 extends Application {
         });
         play.getChildren().add(buttonBack);
 
-        Puzzle_1 puzzle = new Puzzle_1(200, 100, play);
+        Puzzle_1 puzzle = new Puzzle_1(130, 80, play);
         play.getChildren().add(puzzle.getGridPane());
 
         buttonBack.setVisible(true);

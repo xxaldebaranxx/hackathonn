@@ -52,7 +52,7 @@ public class Information extends Application {
                 new Stop(1, Color.web("010546FF"))
         ));
 
-        Image image5 = new Image(new FileInputStream("D:\\OneDrive\\Documents\\github\\demo2\\space learn\\IMG_2289.PNG"));
+        Image image5 = new Image(new FileInputStream("src/main/resources/IMG_2289.PNG"));
         ImageView imageView5 = new ImageView(image5);
         imageView5.setX(180);
         imageView5.setY(180);
