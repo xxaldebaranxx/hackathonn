@@ -1,6 +1,5 @@
 package com.example.space_learn;
-
-import javafx.geometry.Side;
+import javafx.scene.Group;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -9,6 +8,7 @@ import javafx.scene.image.WritableImage;
 import javafx.scene.layout.*;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Random;
 
 public class Puzzle_1 {
@@ -24,23 +24,31 @@ public class Puzzle_1 {
             "file:src/main/resources/images/image3.jpg",
             "file:src/main/resources/images/image4.jpg"};
 
-    private int boxSize = 50;
+
+
+    private int boxSize = 70;
     private int imageArraySize = 4;
-    private int gridWidth = 4;
+    private int gridWidth = 3;
+    private int deadCellCount = 8;
+
+    private int counter = 0;
+    private Group parent;
 
     public Puzzle_1(){
         gridPane = createGridPane();
     }
 
-    public Puzzle_1(int x, int y){
+    public Puzzle_1(int x, int y, Group parent){
+        this.parent = parent;
         createBackgrounds(strs);
+        gridPane = new GridPane();
         gridPane = createGridPane();
         gridPane.setLayoutX(x);
         gridPane.setLayoutY(y);
     }
 
     private GridPane createGridPane(){;
-        GridPane gridPane = new GridPane();
+//        GridPane gridPane = new GridPane();
 
         for (int i = 0; i < gridWidth*gridWidth; i++) {
 
@@ -49,7 +57,7 @@ public class Puzzle_1 {
             String boxSizeStr = "-fx-min-height:" + boxSize + "; -fx-min-width:" + boxSize;
             button.setStyle(boxSizeStr);
 
-            int randomNb = randomizePictureSeed();
+            int randomNb = randomizePictureSeed(imageArraySize -1 ) + 1;
             buttonState.add(randomNb);
 
             int finalI = i;
@@ -58,13 +66,14 @@ public class Puzzle_1 {
                 button.setOnAction(value ->  {
                     int id = finalI;
                     Integer currentState = buttonState.get(finalI);
-                    if(currentState == 0){
-                        return;
-                    }
                     Integer nextBgId = (Integer)( (currentState+1) % imageArraySize);
                     buttonState.set(finalI, nextBgId);
                     buttons.get(finalI).setBackground(backgrounds.get(nextBgId).get(finalI));
+                    checkIfWin();
                 });
+            }
+            else{
+                button.setStyle(boxSizeStr + "; -fx-border-color: blue;");
             }
 
             int rowIndex = (i - (i%gridWidth)) / gridWidth;
@@ -75,13 +84,14 @@ public class Puzzle_1 {
             gridPane.add(button, i % gridWidth, rowIndex, 1, 1);
         }
 
+        setDeadCells(deadCellCount);
+
         return gridPane;
     }
 
-    private int randomizePictureSeed() {
-        Random rand = new Random(); //instance of ran
-        int upperbound = imageArraySize;
-        return rand.nextInt(upperbound);
+    private int randomizePictureSeed(int upperBound) {
+        Random rand = new Random();
+        return rand.nextInt(upperBound);
     }
 
     private void createBackground(String imagePath, int arrayIndex){
@@ -110,14 +120,47 @@ public class Puzzle_1 {
         }
     }
 
+    private void setDeadCells(int deadCellCount){
+        int counter = 0;
+        while(counter < deadCellCount){
+            int index = randomizePictureSeed(buttons.size());
+            if(buttonState.get(index) == 0)
+                continue;
+            buttonState.set(index, 0);
+            String boxSizeStr = "-fx-min-height:" + boxSize + "; -fx-min-width:" + boxSize;
+            Button button = buttons.get(index);
+            button.setStyle(boxSizeStr + "; -fx-border-color: white;");
+            Background background = backgrounds.get(0).get(index);
+            button.setBackground(background);
+            button.setOnAction(value ->  {
+                return;
+            });
+            ++counter;
+        }
+    }
+
+    private void checkIfWin(){
+        int winStateCounter = 0;
+        for (int currentState:buttonState) {
+            if (currentState == 0)
+                ++winStateCounter;
+        }
+        if(winStateCounter == buttonState.size()){
+            buttons = new ArrayList<>();
+            backgrounds = new ArrayList<>();
+            buttonState = new ArrayList<>();
+            --deadCellCount;
+            ++gridWidth;
+            parent.getChildren().remove(this.getGridPane());
+            createBackgrounds(strs);
+            gridPane = createGridPane();
+            parent.getChildren().add(this.getGridPane());
+
+        }
+    }
+
     public GridPane getGridPane(){
         return gridPane;
     }
-
-    private void onButtonClick(){
-
-    }
-
-
 
 }

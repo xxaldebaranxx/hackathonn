@@ -18,8 +18,11 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
-
 import java.io.File;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+
+import java.io.FileInputStream;
 import java.io.IOException;
 
 public class HelloApplication extends Application {
@@ -36,7 +39,6 @@ public class HelloApplication extends Application {
     //setting parameters for the main menu
     public void start(Stage stage) throws IOException {
         Group groupRoot = new Group();
-        //FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
         Scene scene = new Scene(groupRoot, 600, 400);
         stage.setTitle("Space Learn");
         stage.setResizable(false);
@@ -48,6 +50,37 @@ public class HelloApplication extends Application {
         mediaPlayer.setAutoPlay(true);
         mediaPlayer.play();
 
+        Image image1 = new Image(new FileInputStream("src/main/resources/IMG_2281.PNG"));
+        ImageView imageView = new ImageView(image1);
+        imageView.setX(40);
+        imageView.setY(10);
+        imageView.setFitHeight(200);
+        imageView.setFitWidth(200);
+        groupRoot.getChildren().add(imageView);
+
+        Image image2 = new Image(new FileInputStream("src/main/resources/IMG_2285.PNG"));
+        ImageView imageView2 = new ImageView(image2);
+        imageView2.setX(310);
+        imageView2.setY(100);
+        imageView2.setFitHeight(390);
+        imageView2.setFitWidth(390);
+        groupRoot.getChildren().add(imageView2);
+
+        Image image3 = new Image(new FileInputStream("src/main/resources/IMG_2281.PNG"));
+        ImageView imageView3 = new ImageView(image3);
+        imageView3.setX(40);
+        imageView3.setY(170);
+        imageView3.setFitHeight(200);
+        imageView3.setFitWidth(200);
+        groupRoot.getChildren().add(imageView3);
+
+        Image image4 = new Image(new FileInputStream("src/main/resources/IMG_2281.PNG"));
+        ImageView imageView4 = new ImageView(image4);
+        imageView4.setX(360);
+        imageView4.setY(10);
+        imageView4.setFitHeight(200);
+        imageView4.setFitWidth(200);
+        groupRoot.getChildren().add(imageView4);
         stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
             @Override
             public void handle(WindowEvent t) {
@@ -95,7 +128,7 @@ public class HelloApplication extends Application {
         groupRoot.getChildren().add(buttonRules);
         buttonRules.setOnAction(new EventHandler<ActionEvent>() {
             public void handle(ActionEvent event) {
-                new Quiz(stage);
+                new Level2(stage);
             }
         });
 

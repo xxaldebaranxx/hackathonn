@@ -39,13 +39,16 @@ public class Level2 extends Application {
 
 
         Button nextQuestionButton = new Button("BEGIN!");
-        nextQuestionButton.setLayoutX(240);
-        nextQuestionButton.setLayoutY(210);
+        nextQuestionButton.setFont(font);
+        nextQuestionButton.setStyle("-fx-background-color: #00ff00; -fx-text-fill: #000a28;-fx-font-size: 1.75em;-fx-font: normal bold 20px 'Pixeboy';-fx-background-radius: 15px;");
+
+
+        nextQuestionButton.setLayoutX(490);
+        nextQuestionButton.setLayoutY(330);
         nextQuestionButton.setOnAction(new EventHandler<ActionEvent>(){
             public void handle(ActionEvent event){
 
                 new Question(lev2);
-
 
             }
         });
@@ -84,7 +87,9 @@ public class Level2 extends Application {
 
         //Text explaining the quiz
 
-        Text quizInfo = new Text("asdasda");
+        Text quizInfo = new Text("");
+        //TODO implement description about the quiz
+
         quizInfo.setFont(font);
         quizInfo.setFill(Color.WHITE);
         quizInfo.setTranslateX(83);
@@ -93,7 +98,7 @@ public class Level2 extends Application {
 
         //adding button "BACK"
         Button buttonBack = new Button("BACK");
-        buttonBack.setLayoutX(490);
+        buttonBack.setLayoutX(83);
         buttonBack.setLayoutY(330);
         buttonBack.setStyle("-fx-background-color: #00ff00; -fx-text-fill: #000a28;-fx-font-size: 1.75em;-fx-font: normal bold 20px 'Pixeboy';-fx-background-radius: 15px;");
         buttonBack.setOnAction(new EventHandler<ActionEvent>() {
