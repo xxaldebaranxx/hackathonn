@@ -46,7 +46,7 @@ public class Play extends Application {
         ));
 
         //adding label
-        Label label = new Label("SELECT YOUR CHALLENGE!");
+        Label label = new Label("Welcome to the puzzle game!");
         Font font = Font.loadFont("file:src/main/resources/Pixeboy-z8XGD.ttf", 45);
         label.setFont(font);
         label.setTextFill(Color.WHITE);
@@ -55,65 +55,20 @@ public class Play extends Application {
         play.getChildren().add(label);
 
         //adding button "BACK"
-        Button buttonBack = new Button("BACK");
+        Button buttonBack = new Button("BEGIN");
         buttonBack.setLayoutX(490);
         buttonBack.setLayoutY(330);
-        buttonBack.setStyle("-fx-background-color: #00ff00; -fx-text-fill: #000a28;-fx-font-size: 1.75em;-fx-font: normal bold 20px 'Pixeboy';-fx-background-radius: 15px;");
-        buttonBack.setOnAction(new EventHandler<ActionEvent>(){
-            public void handle(ActionEvent event){
-                stage.close();
-                try {
-                    new HelloApplication().closingWindow(stage);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        });
-        play.getChildren().add(buttonBack);
-        buttonBack.setVisible(true);
+        buttonBack.setStyle("-fx-background-color: #00ff00; -fx-text-fill: #000a28;-fx-font-size: 1.2em;-fx-font: normal bold 17px 'Pixeboy';-fx-background-radius: 15px;");
 
-        //adding button "LEVEL 1"
-        Button buttonlev1 = new Button("LEVEL 1");
-        buttonlev1.setLayoutX(70);
-        buttonlev1.setLayoutY(100);
-        buttonlev1.setPrefSize(120, 120);
-        buttonlev1.setStyle("-fx-background-color: #00ff00; -fx-text-fill: #000a28;-fx-font-size: 1.75em;-fx-font: normal bold 25px 'Pixeboy';-fx-background-radius: 15px;");
-        buttonlev1.setOnAction(new EventHandler<ActionEvent>(){
+        buttonBack.setOnAction(new EventHandler<ActionEvent>(){
             public void handle(ActionEvent event){
                 new Level1(stage);
             }
         });
-        play.getChildren().add(buttonlev1);
-        buttonlev1.setVisible(true);
 
+        play.getChildren().add(buttonBack);
+        buttonBack.setVisible(true);
 
-        //adding button "LEVEL 2"
-        Button buttonlev2 = new Button("LEVEL 2");
-        buttonlev2.setLayoutX(230);
-        buttonlev2.setLayoutY(100);
-        buttonlev2.setPrefSize(120, 120);
-        buttonlev2.setStyle("-fx-background-color: #00ff00; -fx-text-fill: #000a28;-fx-font-size: 1.75em;-fx-font: normal bold 25px 'Pixeboy';-fx-background-radius: 15px;");
-        buttonlev2.setOnAction(new EventHandler<ActionEvent>(){
-            public void handle(ActionEvent event){
-                //
-            }
-        });
-        play.getChildren().add(buttonlev2);
-        buttonlev2.setVisible(true);
-
-        //adding button "LEVEL 3"
-        Button buttonlev3 = new Button("LEVEL 3");
-        buttonlev3.setLayoutX(390);
-        buttonlev3.setLayoutY(100);
-        buttonlev3.setPrefSize(120, 120);
-        buttonlev3.setStyle("-fx-background-color: #00ff00; -fx-text-fill: #000a28;-fx-font-size: 1.75em;-fx-font: normal bold 25px 'Pixeboy';-fx-background-radius: 15px;");
-        buttonlev3.setOnAction(new EventHandler<ActionEvent>(){
-            public void handle(ActionEvent event){
-                new Level3(stage);
-            }
-        });
-        play.getChildren().add(buttonlev3);
-        buttonlev3.setVisible(true);
         stage.show();
     }
 }
