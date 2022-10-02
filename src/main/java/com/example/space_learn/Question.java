@@ -9,6 +9,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
@@ -134,6 +135,12 @@ public class Question extends Application {
         groupOfAnswers.setLayoutX(83);
         groupOfAnswers.setLayoutY(180);
         groupOfAnswers.setSpacing(5);
+
+        ImageView sadFrogImage = new ImageView();
+        ImageView happyFrogImage = new ImageView();
+
+
+
 
 
 
