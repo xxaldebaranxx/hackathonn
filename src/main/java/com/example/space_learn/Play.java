@@ -7,6 +7,8 @@ import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.CycleMethod;
 import javafx.scene.paint.RadialGradient;
@@ -14,6 +16,8 @@ import javafx.scene.paint.Stop;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
+
+import java.io.FileInputStream;
 
 public class Play extends Application {
     public Play(Stage stage) {
@@ -68,6 +72,16 @@ public class Play extends Application {
 
         play.getChildren().add(buttonBack);
         buttonBack.setVisible(true);
+
+        Image frogImage = new Image(new FileInputStream("src/main/resources/puzzle/IMG_2303.PNG"));
+
+        ImageView happyView = new ImageView(frogImage);
+        happyView.setX(120);
+        happyView.setY(80);
+        happyView.setFitHeight(270);
+        happyView.setPreserveRatio(true);
+        happyView.setVisible(true);
+        play.getChildren().add(happyView);
 
         stage.show();
     }

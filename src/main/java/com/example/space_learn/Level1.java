@@ -7,6 +7,8 @@ import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.CycleMethod;
@@ -15,6 +17,8 @@ import javafx.scene.paint.Stop;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
+
+import java.io.FileInputStream;
 
 public class Level1 extends Application {
 
@@ -40,6 +44,17 @@ public class Level1 extends Application {
                 System.out.println("CLOSING");
             }
         });
+
+        Image image6 = new Image(new FileInputStream("D:\\OneDrive\\Documents\\github\\demo2\\space learn\\src\\main\\resources\\puzzle\\IMG_2303.PNG"));
+        ImageView imageView6 = new ImageView(image6);
+        imageView6.setX(225);
+        imageView6.setY(200);
+        imageView6.setFitHeight(200);
+        imageView6.setFitWidth(200);
+        play.getChildren().add(imageView6);
+
+
+
 
         //adding background
         scene_lev1.setFill(new RadialGradient(
@@ -79,6 +94,19 @@ public class Level1 extends Application {
         play.getChildren().add(puzzle.getGridPane());
 
         buttonBack.setVisible(true);
+
+//        Image frogImage = new Image(new FileInputStream("src/main/resources/puzzle/IMG_2303.PNG"));
+//
+//        ImageView happyView = new ImageView(frogImage);
+//        happyView.setX(0);
+//        happyView.setY(0);
+//        happyView.setFitHeight(400);
+//        happyView.setFitWidth(500);
+//        happyView.setPreserveRatio(true);
+//        happyView.setVisible(true);
+
+
+        lev1.show();
 
     }
 }

@@ -23,7 +23,8 @@ public class Puzzle_1 {
             "file:src/main/resources/puzzle/5.jpg",
             "file:src/main/resources/puzzle/6.jpg",
             "file:src/main/resources/puzzle/7.jpg",
-            "file:src/main/resources/puzzle/8.jpg"
+            "file:src/main/resources/puzzle/8.jpg",
+
    };
 
     private int boxSize = 100;
